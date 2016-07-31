@@ -15,7 +15,7 @@ class Hi extends React.Component {
         this.setState({ maxCout: this.state.count })
         clearTimeout(this.state.interval_fnc);
       }else{
-        this.setState({ timer: this.state.timer - 0.1 })
+        this.setState({ timer: (this.state.timer - 0.1).toFixed(1) })
       }
     }, 100);
     this.setState({ interval_fnc: interval_fnc })
