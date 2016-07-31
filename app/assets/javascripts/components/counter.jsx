@@ -2,17 +2,18 @@ class Counter extends React.Component {
   constructor(props) {
     super(props)
     _.bindAll(this, ['timerStart', 'restart'])
-    this.state = { count: 0, timer: 10, maxCout: 0 }
+    this.state = { count: 0, timer: this.props.MAX_TIMER, maxCout: 0 }
   }
   onCountUp(){
-    if( this.state.count == 0 ) this.timerStart()
-    if(this.state.timer > 0.0)
-      this.setState({ count: this.state.count + 1 })
+    const {count, timer} = this.state
+    if( count == 0 ) this.timerStart()
+    if(timer > 0.0)  this.setState({ count: count + 1 })
   }
   timerStart(){
-    var interval_fnc = setInterval((time) => {
-      if(this.state.timer <= 0){
-        this.setState({ maxCout: (this.state.count > this.state.maxCout) ? this.state.count : this.state.maxCout  })
+    var interval_fnc = setInterval(() => {
+      const {count, maxCout, timer} = this.state
+      if(timer <= 0){
+        this.setState({ maxCout: (count > maxCout) ? count : maxCout  })
         clearTimeout(this.state.interval_fnc);
       }else{
         this.setState({ timer: (this.state.timer - 0.1).toFixed(1) })
@@ -22,7 +23,7 @@ class Counter extends React.Component {
   }
   restart(){
     clearTimeout(this.state.interval_fnc)
-    this.setState({ count: 0,  timer: 10 })
+    this.setState({ count: 0, timer: this.props.MAX_TIMER })
   }
   render() {
     const {count, timer, maxCout} = this.state
@@ -39,7 +40,7 @@ class Counter extends React.Component {
       <br/>
       <button className="btn btn-info btn-lg"
           onClick={this.onCountUp.bind(this)}>
-          click
+          {(timer <= 0) ? 'se acabo' : 'click!'}
         </button> <br/><br/>
         <button className="btn btn-info btn-lg"
                 onClick={this.restart}>
