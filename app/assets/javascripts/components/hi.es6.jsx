@@ -8,19 +8,28 @@ class Hi extends React.Component {
     }
   }
   onCountUp(){
-    if( this.state.count == 0 )
-      this.timerStart()
-    this.setState({
-      count: this.state.count + 1
-    })
+    if( this.state.count == 0 ) this.timerStart()
+    if(this.state.timer > 30){
+      clearTimeout(this.state.interval_fnc);
+      this.setState({
+        timer: 30
+      })
+    }
+    if(this.state.timer < 30){
+      this.setState({
+        count: this.state.count + 1
+      })
+    }
   }
   timerStart(){
-    var myVar = setInterval((time) => {
+    var interval_fnc = setInterval((time) => {
       this.setState({
         timer: this.state.timer + 0.1
       })
     }, 100);
-    // clearTimeout(myVar);
+    this.setState({
+      interval_fnc: interval_fnc
+    })
   }
   render() {
     const {count, timer} = this.state
