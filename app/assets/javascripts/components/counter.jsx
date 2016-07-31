@@ -1,7 +1,7 @@
 class Counter extends React.Component {
   constructor(props) {
     super(props)
-    _.bindAll(this, ['timerStart', 'restart'])
+    _.bindAll(this, ['timerStart', 'restart', 'onCountUp'])
     this.state = { count: 0, timer: this.props.MAX_TIMER, maxCout: 0 }
   }
   onCountUp(){
@@ -39,8 +39,8 @@ class Counter extends React.Component {
         <h4>clicks: {count}</h4> <br/>
       <br/>
       <button className="btn btn-info btn-lg"
-          onClick={this.onCountUp.bind(this)}>
-          {(timer <= 0) ? 'se acabo' : 'click!'}
+          onClick={this.onCountUp}>
+          {(timer <= 0) ? 'Se acabo' : 'click!'}
         </button> <br/><br/>
         <button className="btn btn-info btn-lg"
                 onClick={this.restart}>
