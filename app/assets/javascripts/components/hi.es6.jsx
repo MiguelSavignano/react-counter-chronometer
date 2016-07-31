@@ -17,6 +17,7 @@ class Hi extends React.Component {
     this.setState({ interval_fnc: interval_fnc })
   }
   restart(){
+    clearTimeout(this.state.interval_fnc)
     this.setState({ count: 0,  timer: 10 })
   }
   render() {
