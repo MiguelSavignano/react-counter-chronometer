@@ -12,7 +12,7 @@ class Counter extends React.Component {
   timerStart(){
     var interval_fnc = setInterval((time) => {
       if(this.state.timer <= 0){
-        this.setState({ maxCout: this.state.count })
+        this.setState({ maxCout: (this.state.count > this.state.maxCout) ? this.state.count : this.state.maxCout  })
         clearTimeout(this.state.interval_fnc);
       }else{
         this.setState({ timer: (this.state.timer - 0.1).toFixed(1) })
