@@ -1,4 +1,4 @@
-class Hi extends React.Component {
+class Counter extends React.Component {
   constructor(props) {
     super(props)
     _.bindAll(this, ['timerStart', 'restart'])
