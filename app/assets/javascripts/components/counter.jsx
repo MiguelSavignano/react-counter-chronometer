@@ -6,7 +6,7 @@ class Counter extends React.Component {
   }
   onCountUp(){
     if( this.state.count == 0 ) this.timerStart()
-    if(this.state.timer >= 0)
+    if(this.state.timer > 0.0)
       this.setState({ count: this.state.count + 1 })
   }
   timerStart(){
