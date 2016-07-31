@@ -11,8 +11,8 @@ class Hi extends React.Component {
   }
   timerStart(){
     var interval_fnc = setInterval((time) => {
-      if(this.state.timer <= 0) clearTimeout(this.state.interval_fnc);
       this.setState({ timer: this.state.timer - 0.1 })
+      if(this.state.timer <= 0) clearTimeout(this.state.interval_fnc);
     }, 100);
     this.setState({ interval_fnc: interval_fnc })
   }
