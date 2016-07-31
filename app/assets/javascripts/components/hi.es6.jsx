@@ -8,25 +8,25 @@ class Hi extends React.Component {
     }
   }
   onCountUp(){
-    this.timerStart()
+    if( this.state.count == 0 )
+      this.timerStart()
     this.setState({
       count: this.state.count + 1
     })
   }
   timerStart(){
     var myVar = setInterval((time) => {
-      // console.log(time)
       this.setState({
-        timer: this.state.timer + 0.01
+        timer: this.state.timer + 0.1
       })
-    }, 1000);
+    }, 100);
     // clearTimeout(myVar);
   }
   render() {
     const {count, timer} = this.state
     return (
       <div>
-        timer  : {timer}
+        timer  : {timer} <br/>
         clicks: {count} <br/>
         <button className="btn btn-info"
           onClick={this.onCountUp.bind(this)}>
