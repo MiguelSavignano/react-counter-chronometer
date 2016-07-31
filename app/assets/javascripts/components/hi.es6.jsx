@@ -25,11 +25,11 @@ class Hi extends React.Component {
       <div>
         timer  : {timer} <br/>
         clicks: {count} <br/>
-        <button className="btn btn-info"
+      <button className="btn btn-info btn-lg"
           onClick={this.onCountUp.bind(this)}>
           click
         </button> <br/><br/>
-        <button className="btn btn-info"
+        <button className="btn btn-info btn-lg"
                 onClick={this.restart}>
           Restart
         </button>
